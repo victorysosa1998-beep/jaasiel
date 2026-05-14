@@ -45,11 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.add('open');
       navLinks.classList.add('open');
       document.body.style.overflow = 'hidden';
+      if (window.innerWidth <= 768) closeBtn.style.display = 'block';
     };
     const closeMenu = () => {
       hamburger.classList.remove('open');
       navLinks.classList.remove('open');
       document.body.style.overflow = '';
+      closeBtn.style.display = 'none';
     };
 
     hamburger.addEventListener('click', openMenu);
