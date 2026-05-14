@@ -92,14 +92,14 @@ document.addEventListener('DOMContentLoaded', () => {
   revealEls.forEach(el => observer.observe(el));
 
   // ── COUNTER ANIMATION ──
-  function animateCounter(el, target, duration = 1600) {
+  function animateCounter(el, target, suffix, duration = 1600) {
     let start = 0;
     const step = (timestamp) => {
       if (!start) start = timestamp;
       const progress = Math.min((timestamp - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.floor(eased * target);
-      el.textContent = current.toLocaleString() + (el.dataset.suffix || '');
+      el.textContent = current.toLocaleString() + suffix;
       if (progress < 1) requestAnimationFrame(step);
     };
     requestAnimationFrame(step);
@@ -113,8 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const raw = el.textContent.replace(/[^0-9]/g, '');
         const suffix = el.textContent.replace(/[0-9,]/g, '');
         if (raw) {
-          el.dataset.suffix = suffix;
-          animateCounter(el, parseInt(raw));
+          // Pre-set to final value dimensions so there's no layout shift
+          el.dataset.finalText = el.textContent;
+          animateCounter(el, parseInt(raw), suffix);
         }
         counterObserver.unobserve(el);
       }

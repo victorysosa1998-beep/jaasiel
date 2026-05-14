@@ -188,7 +188,7 @@ address { font-style: normal; }
   padding-top: 12px; animation: fadeUp 0.9s 0.4s ease both;
 }
 .stat { display: flex; flex-direction: column; gap: 2px; }
-.stat-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--gold-light); line-height: 1; }
+.stat-num { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--gold-light); line-height: 1; min-width: 4ch; display: inline-block; }
 .stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); letter-spacing: 0.05em; text-transform: uppercase; }
 .stat-div { width: 1px; height: 36px; background: rgba(255,255,255,0.18); }
 .hero-scroll-hint {
@@ -409,7 +409,7 @@ address { font-style: normal; }
 .stats-banner { background: linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%); padding: 60px 0; }
 .stats-row { display: flex; justify-content: center; gap: 64px; flex-wrap: wrap; }
 .stat-big { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-.stat-num-big { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 700; color: var(--gold-light); line-height: 1; }
+.stat-num-big { font-family: var(--font-serif); font-size: 3.2rem; font-weight: 700; color: var(--gold-light); line-height: 1; min-width: 5ch; display: inline-block; text-align: center; }
 .stat-lbl { font-size: 0.78rem; color: rgba(255,255,255,0.55); letter-spacing: 0.1em; text-transform: uppercase; font-family: var(--font-display); }
 
 /* ---------- CTA BAND ---------- */
@@ -638,7 +638,20 @@ address { font-style: normal; }
   .hero-image-panel { display: none; }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--navy); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 1001; padding-top: 0; }
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    height: 100dvh; /* fills true viewport height regardless of scroll position */
+    background: var(--navy);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    z-index: 1001;
+    padding-top: 0;
+    overflow: hidden; /* no inner scroll */
+  }
   .nav-links.open { display: flex; }
   .nav-links a { font-size: 1.3rem; }
   /* Hamburger sits ABOVE the full-screen nav drawer at all times */
