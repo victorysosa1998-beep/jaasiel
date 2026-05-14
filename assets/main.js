@@ -34,32 +34,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const hamburger = document.getElementById('hamburger');
   const navLinks  = document.getElementById('navLinks');
   if (hamburger && navLinks) {
-    // Add X close button inside the drawer
-    const closeBtn = document.createElement('button');
-    closeBtn.setAttribute('aria-label', 'Close menu');
-    closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    closeBtn.style.cssText = 'position:absolute;top:24px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;line-height:1;padding:4px 8px;z-index:1002;display:none;';
-    navLinks.appendChild(closeBtn);
+    // The hamburger spans already animate into an X via CSS (.hamburger.open)
+    // No injected button needed — one button, one X, no duplicates.
 
-    const openMenu = () => {
-      hamburger.classList.add('open');
-      navLinks.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      if (window.innerWidth <= 768) closeBtn.style.display = 'block';
-    };
     const closeMenu = () => {
       hamburger.classList.remove('open');
       navLinks.classList.remove('open');
       document.body.style.overflow = '';
-      closeBtn.style.display = 'none';
+    };
+    const openMenu = () => {
+      hamburger.classList.add('open');
+      navLinks.classList.add('open');
+      document.body.style.overflow = 'hidden';
     };
 
-    hamburger.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
+    // Single toggle — works as both open AND close button
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navLinks.classList.contains('open') ? closeMenu() : openMenu();
+    });
 
-    // Close on nav link click
+    // Close when any nav link is tapped
     navLinks.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', closeMenu);
+    });
+
+    // Close when tapping the dark backdrop outside the nav
+    document.addEventListener('click', (e) => {
+      if (navLinks.classList.contains('open') &&
+          !navLinks.contains(e.target) &&
+          !hamburger.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
     });
   }
 

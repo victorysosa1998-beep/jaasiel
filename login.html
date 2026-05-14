@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction | Emerald Schools</title>
+    <style>
+        /* Color Palette from Source */
+        :root {
+            --emerald-dark: #0d3d25; /* [cite: 1, 5] */
+            --gold-light: #e2c06a;   /* [cite: 7, 19] */
+            --gold-deep: #c9a84c;    /* [cite: 9] */
+            --white-soft: #f9f9f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', serif; /* Matching preloader style [cite: 7] */
+        }
+
+        body {
+            background-color: var(--emerald-dark);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* Background Decoration */
+        body::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(226, 192, 106, 0.05) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            color: var(--white-soft);
+        }
+
+        /* Admissions Band Style [cite: 18] */
+        .info-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--gold-deep);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .info-box h2 {
+            color: var(--gold-light);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-gold {
+            background: var(--gold-deep);
+            color: var(--emerald-dark);
+        }
+
+        .btn-gold:hover {
+            background: var(--gold-light);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--gold-light);
+            color: var(--gold-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(226, 192, 106, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .logo { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="logo">Jaasiel Education Centre</div>
+        <div class="tagline">…raising role models</div>
+
+        <h1>Under Construction</h1>
+        <p>We are currently polishing our digital home to better serve our students and parents. We'll be back online shortly!</p>
+
+        <div class="info-box">
+            <h2>Admissions in Progress — 2026/2027</h2>
+            <p style="font-size: 1rem;">Entrance examinations: <strong>15th, 20th & 27th March 2025</strong></p>
+            
+            <div class="cta-group">
+                <a href="mailto:admissions@jaasiel.edu.ng" class="btn btn-gold">Register Interest</a>
+                <a href="#" class="btn btn-outline">Request Prospectus</a>
+            </div>
+        </div>
+
+        <p style="font-size: 0.9rem; opacity: 0.5;">
+            &copy; 2026 Emerald Schools. All rights reserved.
+        </p>
+    </div>
+
+</body>
+</html>
