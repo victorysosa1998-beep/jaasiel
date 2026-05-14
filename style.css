@@ -638,11 +638,13 @@ address { font-style: normal; }
   .hero-image-panel { display: none; }
 }
 @media (max-width: 768px) {
-  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(7,17,43,0.99); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 999; padding-top: 80px; }
+  .nav-links { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--navy); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 1001; padding-top: 0; }
   .nav-links.open { display: flex; }
   .nav-links a { font-size: 1.3rem; }
-  .hamburger { display: flex; }
+  .hamburger { display: flex; z-index: 1002; position: relative; }
   .btn-nav { display: none; }
+  .nav-close-btn { display: none; position: fixed; top: 22px; right: 24px; z-index: 1003; background: none; border: none; cursor: pointer; color: var(--white); font-size: 2rem; line-height: 1; padding: 4px 10px; }
+  .nav-links.open ~ .nav-close-btn, .nav-close-btn.visible { display: block; }
   .hero-content { padding: 110px 20px 70px; }
   .hero-stats { flex-wrap: wrap; gap: 20px; }
   .stat-div { display: none; }
